@@ -1,10 +1,16 @@
 import React from 'react'
-import { Container } from 'react-bootstrap'
+import { Container, Form } from 'react-bootstrap'
+import NavbarComponent from '../components/navbar/Navbar'
+import { useDispatch, useSelector } from 'react-redux'
+import Footer from '../components/footer/Footer'
 
 function Profile() {
+    const emailMember = useSelector(state => state.auth.user.email)
     return (
-        <Container>
-            <h1 className="text-center">Profile</h1>
+        <Container fluid>
+            <NavbarComponent />
+            <h1 className="text-center">Hi, {emailMember}</h1>
+            <Footer />
         </Container>
     )
 }

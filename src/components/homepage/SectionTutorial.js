@@ -5,12 +5,12 @@ import MediaPlayer from './MediaPlayer'
 
 export default function SectionTutorial() {
     return (
-        <section id="tutorial" class="tutorial">
+        <section id="tutorial" className="tutorial">
             <Container>
                 <Col lg={6} className="text-center mx-auto py-3" data-aos="zoom-out">
-                    <h2 class="py-3">Effortlessly make a job-worthy resume and cover letter that gets you hired faster</h2>
+                    <h2 className="py-3">Effortlessly make a job-worthy resume and cover letter that gets you hired faster</h2>
                     <MediaPlayer />
-                    <Link to="/resume2" class="btn btn-primary my-4 py-2">Build Your Resume</Link>
+                    <Link to="/resume2" className="btn btn-primary my-4 py-2">Build Your Resume</Link>
                 </Col>
             </Container>
         </section>

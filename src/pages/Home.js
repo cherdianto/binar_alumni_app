@@ -12,9 +12,8 @@ import NavbarComponent from '../components/navbar/Navbar'
 AOS.init();
 
 function Home() {
-
     return (
-        <div>
+        <Container fluid>
             <NavbarComponent />
             <Container>
                 <SectionTutorial />
@@ -22,7 +21,7 @@ function Home() {
                 <SectionServices />
             </Container>
             <Footer />
-        </div>
+        </Container>
     )
 }
 
