@@ -20,6 +20,8 @@ export default function SignedInLinks() {
             <Nav className="ml-auto">
                 <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
                 <Nav.Link as={Link} to="/redux">Redux</Nav.Link>
+                <Nav.Link as={Link} to="/page1">Page 1</Nav.Link>
+                <Nav.Link as={Link} to="/page2">Page 2</Nav.Link>
                 <Nav.Link><p onClick={() => dispatch(logout())}>Logout</p></Nav.Link>
             </Nav>
             </Navbar.Collapse>

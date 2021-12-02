@@ -65,3 +65,13 @@ export const register = (email, password) => {
        
     }
 }
+
+export const cleanErrorCode = () => {
+    return async (dispatch, getState) => {
+            
+        dispatch({
+            type: 'CLEAN_ERROR_CODE'
+        });           
+       
+    }
+}
