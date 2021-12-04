@@ -9,7 +9,9 @@ const authReducer = (state = initState, action) => {
             // console.log(action.payload)
             return {
                 ...state,
-                user: action.payload
+                user: action.payload,
+                errorCode: '',
+                errorMessage: ''
             }
         case 'LOGIN_ERROR':
             // console.log(action.payload)
@@ -38,6 +40,13 @@ const authReducer = (state = initState, action) => {
                 user: null,
                 errorCode: action.payload.errorCode,
                 errorMessage: action.payload.errorMessage
+            }
+        case 'CLEAN_ERROR_CODE':
+            // console.log(action.payload)
+            return {
+                ...state,
+                errorCode: null,
+                errorMessage: null
             }
         default:
             return state;

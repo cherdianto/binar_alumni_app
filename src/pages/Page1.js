@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getData } from '../redux/actions/data.action'
+import NavbarComponent from '../components/navbar/Navbar';
+import Footer from '../components/footer/Footer';
 
-export default function Home() {
+export default function Page1() {
     const dispatch = useDispatch();
     const coba = useSelector(state => state.data.data);
 
@@ -13,8 +15,10 @@ export default function Home() {
 
     return (
         <div>
+            <NavbarComponent />
             <h1>PAGE 1</h1>
             { coba }
+            <Footer />
         </div>
     )
 }

@@ -12,19 +12,17 @@ function Redux() {
     const dispatch = useDispatch();
 
     return (
-        <div>
-            <Container fluid>
-                <NavbarComponent />
-                <Container>
-                    <h1 className="text-center py-5">REDUX {coba}</h1>
-                    <h4>test redux</h4>
-                    <h5>{ coba }</h5>
-                    <button onClick={() => dispatch(addData(10))}>Add Data</button>
-                    <button onClick={() => dispatch(deleteData())}>Delete Data</button>
-                </Container>
-                <Footer />
+        <Container fluid>
+            <NavbarComponent />
+            <Container>
+                <h1 className="text-center py-5">REDUX {coba}</h1>
+                <h4>test redux</h4>
+                <h5>{ coba }</h5>
+                <button onClick={() => dispatch(addData(10))}>Add Data</button>
+                <button onClick={() => dispatch(deleteData())}>Delete Data</button>
             </Container>
-        </div>
+            <Footer />
+        </Container>
     )
 }
 

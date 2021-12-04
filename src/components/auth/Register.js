@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap'
+import { Container, Row, Col, Form, Button, Alert, Nav } from 'react-bootstrap'
 import classes from './Login.module.css'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 // redux things
 import { useDispatch, useSelector } from 'react-redux'
-import { register } from '../../redux/actions/auth.actions'
+import { register, cleanErrorCode } from '../../redux/actions/auth.actions'
 
 function RegisterComponent() {
     const [email, setEmail] = useState('')
@@ -24,10 +24,13 @@ function RegisterComponent() {
 
         if(name === 'email') setEmail(val)
         else if (name === 'password') setPassword(val)
+        setShowAlert(false)
     }
-
+    
     const handleSubmit = (event) => {
         event.preventDefault();
+        dispatch(cleanErrorCode())
+
 
         if (!email || !password){
             return setShowAlert(true)
@@ -38,20 +41,22 @@ function RegisterComponent() {
 
     useEffect(()=>{
         if(currentUser){
-            navigate('/')
-        } else if(errorCode){
-            // console.log(errorCode)
-            setShowAlert(true)
-            setShowError(errorCode)
+            navigate('/profile')
         }
-    }, [currentUser, errorCode, errorMessage, showError, navigate])
+    }, [currentUser, navigate])
+
+    useEffect(()=> {
+        const err = ( errorCode ? true : false )
+        setShowAlert(err)
+        setShowError(errorCode)
+    }, [errorCode])
 
     return (
         <div className={classes.hcustom}>
             <Container className="h-100">
                 <Row className="py-5 h-100 mx-auto justify-content-center align-items-center">
-                    <Col md={4}>
-                        <Col md={12}>
+                    <Col md={8} lg={8}>
+                        <Col md={8} className="mx-auto justify-content-center">
                             <Form onSubmit={handleSubmit}>
                                 <h3 className="mb-3">Register</h3>
                                 <Form.Group>
@@ -62,10 +67,10 @@ function RegisterComponent() {
                                     <Form.Label>Password</Form.Label>
                                     <Form.Control type="password" id="password" onChange={set('password')} value={password}/>
                                 </Form.Group>
-                                <Button type="submit" variant="primary" className="w-100 my-4">Login</Button>
+                                <Button type="submit" variant="primary" className="w-100 my-4">Register</Button>
                                 <Alert show={showAlert} variant="warning">{showError}</Alert>
                                 <Form.Group>
-                                    <p>Already a member? <a href="/login">Register Here</a></p>
+                                    <p>Already a member? <Link as={Link} to="/login">Login Here</Link></p>
                                 </Form.Group>
                             </Form>
                         </Col>

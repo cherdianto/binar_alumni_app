@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap'
+import { Container, Row, Col, Form, Button, Alert, Nav } from 'react-bootstrap'
 import classes from './Login.module.css'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+
 
 // redux things
 import { useDispatch, useSelector } from 'react-redux'
-import { login } from '../../redux/actions/auth.actions'
+import { login, cleanErrorCode } from '../../redux/actions/auth.actions'
+import { getAuth, onAuthStateChanged } from '@firebase/auth'
 
 function LoginComponent(props) {
     const [ email, setEmail ] = useState('')
@@ -33,9 +35,12 @@ function LoginComponent(props) {
     const handleSubmit = (event) => {
         
         event.preventDefault();
+        dispatch(cleanErrorCode())
 
+        
         //form-validity check
         if (!email || !password){
+            setShowError('name/password cannot be empty')
             return setShowAlert(true)
         }
 
@@ -46,19 +51,22 @@ function LoginComponent(props) {
     // if user already logged in
     useEffect(()=>{
         if (currentUser) {
-            navigate('/')   
-        } else if (errorCode){
-            setShowAlert(true)
-            setShowError(errorCode)
+            navigate('/profile')   
         }
-    },[currentUser, errorCode, errorMessage, showError, navigate])
+    },[currentUser, navigate])
+
+    useEffect(()=> {
+        const err = ( errorCode ? true : false )
+        setShowAlert(err)
+        setShowError(errorCode)
+    }, [errorCode])
 
     return (
         <div className={classes.hcustom}>
             <Container className="h-100">
                 <Row className="py-5 h-100 mx-auto justify-content-center align-items-center">
-                    <Col md={4}>
-                        <Col md={12}>
+                    <Col md={8} lg={8} >
+                        <Col lg={8} className="mx-auto justify-content-center">
                             <Form onSubmit={handleSubmit}>
                                 <h3 className="mb-3">Log In</h3>
                                 <Form.Group>
@@ -72,7 +80,7 @@ function LoginComponent(props) {
                                 <Button type="submit" value="submit" variant="primary" className="w-100 my-4">Login</Button>
                                 <Alert show={showAlert} variant="warning">{ showError }</Alert>
                                 <Form.Group>
-                                    <p>Not a member? <a href="/register">Register Here</a></p>
+                                    <p>Not a member? <Link as={Link} to="/register">Register Here</Link></p>
                                 </Form.Group>
                             </Form>
                         </Col>
