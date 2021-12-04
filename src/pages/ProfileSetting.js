@@ -3,7 +3,6 @@ import { Card, Col, Container, Form, Row, Nav, Tab } from 'react-bootstrap'
 import NavbarComponent from '../components/navbar/Navbar'
 import { useDispatch, useSelector } from 'react-redux'
 import Footer from '../components/footer/Footer'
-import classes from './Profile.module.css'
 
 function ProfileSetting() {
     // const { uid, displayName, email, phoneNumber, photoUrl } = useSelector(state => state.auth.user.providerData[0])
@@ -17,7 +16,7 @@ function ProfileSetting() {
             <NavbarComponent />
             <Container className="hcustom">
                 <Tab.Container defaultActiveKey="profile">
-                    <Row className={`${classes.gutterSmall} py-3`}>
+                    <Row className="gutterSmall py-3">
                         <Col md={4} className="d-none d-md-block">
                         {/* make menu fixed position and full width */}
                             <Card> 
