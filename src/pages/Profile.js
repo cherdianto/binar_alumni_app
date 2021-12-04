@@ -17,7 +17,7 @@ function Profile() {
         <Container fluid>
             <NavbarComponent />
                 <Container className="justify-content-between">
-                <Row className={classes.gutterSmall}>
+                <Row className="gutterSmall">
                     <Col md={4} className="text-center py-3 mb-3"> 
                         <Card>
                             <Card.Body>
