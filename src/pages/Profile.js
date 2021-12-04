@@ -4,6 +4,7 @@ import NavbarComponent from '../components/navbar/Navbar'
 import { useDispatch, useSelector } from 'react-redux'
 import Footer from '../components/footer/Footer'
 import classes from './Profile.module.css'
+import { Link } from 'react-router-dom'
 
 function Profile() {
     // const { uid, displayName, email, phoneNumber, photoUrl } = useSelector(state => state.auth.user.providerData[0])
@@ -99,7 +100,7 @@ function Profile() {
                                 <hr />
                                 <Row>
                                     <div className="col-sm-12">
-                                    <a className="btn btn-primary " target="__blank" href="/">Edit</a>
+                                    <Link className="btn btn-primary " to="/profile-setting">Edit</Link>
                                     </div>
                                 </Row>
                             </Card.Body>

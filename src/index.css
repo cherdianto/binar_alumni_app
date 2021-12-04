@@ -54,3 +54,7 @@ code {
   font-family: "Poppins", sans-serif;
   color: #2a2c39;
 }
+
+.hcustom {
+  min-height: calc(100vh - 115px);
+}
