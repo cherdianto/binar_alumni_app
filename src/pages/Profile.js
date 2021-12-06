@@ -9,6 +9,7 @@ import CarrerSummariesComponent from '../components/profile/carrer/CarrerSummari
 import FormalEducationComponent from '../components/profile/formalEducation/FormalEducationComponent'
 import FormalTrainingCertificationComponent from '../components/profile/formalTrainingCertification/FormalTrainingCertificationComponent'
 import LanguageComponent from '../components/profile/language/LanguageComponent'
+import PortfoliosComponent from '../components/profile/portfolios/PortfoliosComponent'
 
 function Profile() {
     // const { uid, displayName, email, phoneNumber, photoUrl } = useSelector(state => state.auth.user.providerData[0])
@@ -26,6 +27,9 @@ function Profile() {
     const whatsapp = '081233212312'
     const telegram = 'telegram.com/123231'
     const specialization = 'Full Stack Developer'
+    const occupation = 'Not Occupied'
+    const timeAvailabitily = '-5 till +5 CET'
+    const workPreferences = 'Parttime WFH'
     const introduction = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum lacinia felis vitae volutpat. Sed ac risus massa. Vestibulum rhoncus laoreet rhoncus. Integer sed turpis ornare, varius mauris quis, egestas nisl. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Quisque massa erat, sollicitudin ac ante eu, varius ornare ligula. Donec lobortis pulvinar malesuada. Fusce ornare porta nulla id molestie. Mauris eu justo in dui dignissim tincidunt. Integer eleifend, ligula sed efficitur congue, metus ligula hendrerit mi, ut rhoncus orci nunc ac orci. Vivamus non vulputate erat. Nullam tristique arcu massa, eu viverra tortor convallis vitae. Sed id fermentum urna. Duis nunc purus, mattis a sollicitudin in, bibendum nec lacus. Vestibulum egestas facilisis faucibus. Praesent tincidunt elit vel viverra eleifend. Mauris ipsum velit, interdum vitae tempus vitae, interdum quis felis. Quisque libero augue, tincidunt in dignissim at, luctus ac elit. In quis neque scelerisque, efficitur urna eget, dapibus velit.'
     const techSkill = {
         languages: ['C', 'C++', 'Javascript', 'Google App Script'],
@@ -83,6 +87,11 @@ function Profile() {
             language: 'Dutch',
             level: 'Basic'
         },
+        { 
+            id: '3',
+            language: 'Bahasa Indonesia',
+            level: 'Fluent/Mother Tongue'
+        },
     ]
     const carrerSummary = [
         { 
@@ -124,6 +133,56 @@ function Profile() {
             description: 'lorem ipsum generator making'
         }
     ]
+    const portfolios = [
+        { 
+            id: '1',
+            title: 'Portfolio Website',
+            description: 'lorem ipsum generator making',
+            techStack: 'ReactJS, Redux, Express, MongoDb',
+            url: 'lorem ipsum generator making'
+        },
+        { 
+            id: '2',
+            title: 'Thuisbezorgd.nl',
+            description: 'lorem ipsum generator making',
+            techStack: 'Redux, Go-lang, phyton, javascript, css, HTML',
+            url: 'lorem ipsum generator making'
+        },
+        { 
+            id: '3',
+            title: 'Javascript Games',
+            description: 'webcreatia.com',
+            techStack: 'januari 2020 - januari 2021',
+            url: 'lorem ipsum generator making'
+        },
+        { 
+            id: '4',
+            title: 'Pulangkampung.eu',
+            description: 'webcreatia.com',
+            techStack: 'januari 2020 - januari 2021',
+            url: 'lorem ipsum generator making'
+        }
+    ]
+    const reviews = [
+        {
+            id: 1,
+            name: "id labore ex et quam laborum",
+            email: "Eliseo@gardner.biz",
+            body: "laudantium enim quasi est quidem magnam voluptate ipsam eos tempora quo necessitatibus dolor quam autem quasi reiciendis et nam sapiente accusantium"
+        },
+        {
+            id: 2,
+            name: "quo vero reiciendis velit similique earum",
+            email: "Jayne_Kuhic@sydney.com",
+            body: "est natus enim nihil est dolore omnis voluptatem numquam et omnis occaecati quod ullam at voluptatem error expedita pariatur nihil sint nostrum voluptatem reiciendis et"
+            },
+        {
+            id: 3,
+            name: "odio adipisci rerum aut animi",
+            email: "Nikita@garfield.biz",
+            body: "quia molestiae reprehenderit quasi aspernatur aut expedita occaecati aliquam eveniet laudantium omnis quibusdam delectus saepe quia accusamus maiores nam est cum et ducimus et vero voluptates excepturi deleniti ratione"
+        },
+    ]
 
     return (
         <Container fluid>
@@ -131,8 +190,8 @@ function Profile() {
                 <Container className="justify-content-between">
                 <Row className="gutterSmall">
                     <Col lg={4} className="text-center py-3 mb-3"> 
-                        <Card>
-                            <Card.Body>
+                        <Card className="mb-3">
+                            <Card.Body md={12}>
                                 <div className="d-flex flex-column align-items-center text-center">
                                     <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Admin" className="rounded-circle p-1 bg-primary" width="110" />
                                     <div className="mt-3">
@@ -142,6 +201,13 @@ function Profile() {
                                         <p className="text-muted font-size-sm mb-1">{ email }</p>
                                         <p className="text-muted font-size-sm mb-1">Whatsapp: { whatsapp }</p>
                                         <p className="text-muted font-size-sm mb-1">Telegram: { telegram }</p>
+                                        <hr />
+                                        <h5>Current Status</h5>
+                                        <p className="text-muted font-size-sm mb-1">{occupation}</p>
+                                        <hr />
+                                        <h5>Availability</h5>
+                                        <p className="text-muted font-size-sm mb-1">Job Preferences: {workPreferences}</p>
+                                        <p className="text-muted font-size-sm mb-1">Time Availability: {timeAvailabitily}</p>
                                         <hr />
                                         <button className="btn btn-primary mx-2">Follow</button>
                                         <button className="btn btn-outline-primary mx-2">Message</button>
@@ -162,6 +228,54 @@ function Profile() {
                                         <span className="text-secondary">{ instagram ? instagram : '' }</span>
                                     </li>
                                 </ul>
+                            </Card.Body>
+                        </Card>
+                        <Card className="mb-3">
+                            <Card.Body md={12}>
+                                {/* <div class="bg-white rounded shadow-sm p-4 mb-4 clearfix graph-star-rating"> */}
+                                <h5 className="mb-2">Ratings and Reviews</h5>
+                                <div class="graph-star-rating-header">
+                                    <div class="star-rating">
+                                        <a href="#"><i class="icofont-ui-rating active"></i></a>
+                                        <a href="#"><i class="icofont-ui-rating active"></i></a>
+                                        <a href="#"><i class="icofont-ui-rating active"></i></a>
+                                        <a href="#"><i class="icofont-ui-rating active"></i></a>
+                                        <a href="#"><i class="icofont-ui-rating"></i></a> <b class="text-black ml-2">334</b>
+                                    </div>
+                                    <p class="text-black mb-4 mt-2">Rated 3.5 out of 5</p>
+                                </div>
+                                <div class="graph-star-rating-body">
+                                    <Row className="d-inline-flex w-100">
+                                        <Col className="w-10">5 Star</Col>
+                                        <Col className="w-80"><ProgressBar now={56} /></Col>
+                                        <Col className="w-10">56%</Col>
+                                    </Row>
+                                    <Row className="d-inline-flex w-100">
+                                        <Col className="w-10">5 Star</Col>
+                                        <Col className="w-80"><ProgressBar now={30} /></Col>
+                                        <Col className="w-10">30%</Col>
+                                    </Row>
+                                    <Row className="d-inline-flex w-100">
+                                        <Col className="w-10">5 Star</Col>
+                                        <Col className="w-80"><ProgressBar now={20} /></Col>
+                                        <Col className="w-10">20%</Col>
+                                    </Row>
+                                    <Row className="d-inline-flex w-100">
+                                        <Col className="w-10">5 Star</Col>
+                                        <Col className="w-80"><ProgressBar now={10} /></Col>
+                                        <Col className="w-10">10%</Col>
+                                    </Row>
+                                    <Row className="d-inline-flex w-100">
+                                        <Col className="w-10">5 Star</Col>
+                                        <Col className="w-80"><ProgressBar now={5} /></Col>
+                                        <Col className="w-10">5%</Col>
+                                    </Row>
+                                    
+                                </div>
+                                <div class="graph-star-rating-footer text-center mt-3 mb-3">
+                                    <button type="button" class="btn btn-outline-primary btn-sm">Rate and Review</button>
+                                </div>
+                            {/* </div> */}
                             </Card.Body>
                         </Card>
                     </Col>
@@ -208,7 +322,8 @@ function Profile() {
                         <FormalEducationComponent formalEducation={formalEducation}/>
                         <FormalTrainingCertificationComponent formalTrainingCertification={formalTrainingCertification}/>
                         <LanguageComponent language={languages} />
-                        <Row className={classes.guttersSmall}>
+                        <PortfoliosComponent portfolios={portfolios} />
+                        {/* <Row className={classes.guttersSmall}>
                             <Col className="mb-3">
                                 <Card className="h-100">
                                     <div class="card-body">
@@ -252,7 +367,7 @@ function Profile() {
                                     </Card.Body>
                                 </Card>
                             </Col>
-                        </Row>
+                        </Row> */}
                     </Col>
                 </Row>
             </Container>
