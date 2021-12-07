@@ -3,17 +3,21 @@ import { Card, Col, Container, Form, ProgressBar, Row } from 'react-bootstrap'
 import NavbarComponent from '../components/navbar/Navbar'
 import { useDispatch, useSelector } from 'react-redux'
 import Footer from '../components/footer/Footer'
-import classes from './Profile.module.css'
 import { Link } from 'react-router-dom'
 import CarrerSummariesComponent from '../components/profile/carrer/CarrerSummariesComponent'
 import FormalEducationComponent from '../components/profile/formalEducation/FormalEducationComponent'
 import FormalTrainingCertificationComponent from '../components/profile/formalTrainingCertification/FormalTrainingCertificationComponent'
 import LanguageComponent from '../components/profile/language/LanguageComponent'
 import PortfoliosComponent from '../components/profile/portfolios/PortfoliosComponent'
+import CommentsComponent from '../components/profile/comments/CommentsComponent'
+import TechnicalSkillComponent from '../components/profile/technicalSkill/TechnicalSkillComponent'
+import IntroductionComponent from '../components/profile/introduction/IntroductionComponent'
+import RatingComponent from '../components/profile/rating/RatingComponent'
 
 function Profile() {
     // const { uid, displayName, email, phoneNumber, photoUrl } = useSelector(state => state.auth.user.providerData[0])
     // const emailMember = (uid) ? uid : 'Guest.'
+    
     // dummy data 
     const email = 'email@email.com'
     const displayName = 'Candra Herdianto'
@@ -32,9 +36,9 @@ function Profile() {
     const workPreferences = 'Parttime WFH'
     const introduction = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum lacinia felis vitae volutpat. Sed ac risus massa. Vestibulum rhoncus laoreet rhoncus. Integer sed turpis ornare, varius mauris quis, egestas nisl. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Quisque massa erat, sollicitudin ac ante eu, varius ornare ligula. Donec lobortis pulvinar malesuada. Fusce ornare porta nulla id molestie. Mauris eu justo in dui dignissim tincidunt. Integer eleifend, ligula sed efficitur congue, metus ligula hendrerit mi, ut rhoncus orci nunc ac orci. Vivamus non vulputate erat. Nullam tristique arcu massa, eu viverra tortor convallis vitae. Sed id fermentum urna. Duis nunc purus, mattis a sollicitudin in, bibendum nec lacus. Vestibulum egestas facilisis faucibus. Praesent tincidunt elit vel viverra eleifend. Mauris ipsum velit, interdum vitae tempus vitae, interdum quis felis. Quisque libero augue, tincidunt in dignissim at, luctus ac elit. In quis neque scelerisque, efficitur urna eget, dapibus velit.'
     const techSkill = {
-        languages: ['C', 'C++', 'Javascript', 'Google App Script'],
-        tools: ['Node.js','Express', 'Google App Script', 'ReactJs'],
-        environments: ['Linux','Windows','Apache']
+        Languages: ['C', 'C++', 'Javascript', 'Google App Script'],
+        Tools: ['Node.js','Express', 'Google App Script', 'ReactJs'],
+        Environments: ['Linux','Windows','Apache']
     }
     const formalEducation = [
         {
@@ -163,24 +167,30 @@ function Profile() {
             url: 'lorem ipsum generator making'
         }
     ]
-    const reviews = [
+    const comments = [
         {
             id: 1,
-            name: "id labore ex et quam laborum",
-            email: "Eliseo@gardner.biz",
+            imgUrl : "http://bootdey.com/img/Content/avatar/avatar1.png",
+            name: "Candra Herdianto",
+            job: "Senior Full Stack Developer",
+            date: "June 1st, 2020",
             body: "laudantium enim quasi est quidem magnam voluptate ipsam eos tempora quo necessitatibus dolor quam autem quasi reiciendis et nam sapiente accusantium"
         },
         {
             id: 2,
-            name: "quo vero reiciendis velit similique earum",
-            email: "Jayne_Kuhic@sydney.com",
-            body: "est natus enim nihil est dolore omnis voluptatem numquam et omnis occaecati quod ullam at voluptatem error expedita pariatur nihil sint nostrum voluptatem reiciendis et"
-            },
+            imgUrl : "http://bootdey.com/img/Content/avatar/avatar1.png",
+            name: "Candra Herdianto",
+            job: "Senior Full Stack Developer",
+            date: "June 1st, 2020",
+            body: "laudantium enim quasi est quidem magnam voluptate ipsam eos tempora quo necessitatibus dolor quam autem quasi reiciendis et nam sapiente accusantium"
+        },
         {
             id: 3,
-            name: "odio adipisci rerum aut animi",
-            email: "Nikita@garfield.biz",
-            body: "quia molestiae reprehenderit quasi aspernatur aut expedita occaecati aliquam eveniet laudantium omnis quibusdam delectus saepe quia accusamus maiores nam est cum et ducimus et vero voluptates excepturi deleniti ratione"
+            imgUrl : "http://bootdey.com/img/Content/avatar/avatar1.png",
+            name: "Candra Herdianto",
+            job: "Senior Full Stack Developer",
+            date: "June 1st, 2020",
+            body: "laudantium enim quasi est quidem magnam voluptate ipsam eos tempora quo necessitatibus dolor quam autem quasi reiciendis et nam sapiente accusantium"
         },
     ]
 
@@ -211,6 +221,7 @@ function Profile() {
                                         <hr />
                                         <button className="btn btn-primary mx-2">Follow</button>
                                         <button className="btn btn-outline-primary mx-2">Message</button>
+                                        <button className="btn btn-outline-primary mx-2"><Link to="/profile-setting">Edit</Link></button>
                                     </div>
                                 </div>
                                 <hr className="my-4" />
@@ -230,144 +241,18 @@ function Profile() {
                                 </ul>
                             </Card.Body>
                         </Card>
-                        <Card className="mb-3">
-                            <Card.Body md={12}>
-                                {/* <div class="bg-white rounded shadow-sm p-4 mb-4 clearfix graph-star-rating"> */}
-                                <h5 className="mb-2">Ratings and Reviews</h5>
-                                <div class="graph-star-rating-header">
-                                    <div class="star-rating">
-                                        <a href="#"><i class="icofont-ui-rating active"></i></a>
-                                        <a href="#"><i class="icofont-ui-rating active"></i></a>
-                                        <a href="#"><i class="icofont-ui-rating active"></i></a>
-                                        <a href="#"><i class="icofont-ui-rating active"></i></a>
-                                        <a href="#"><i class="icofont-ui-rating"></i></a> <b class="text-black ml-2">334</b>
-                                    </div>
-                                    <p class="text-black mb-4 mt-2">Rated 3.5 out of 5</p>
-                                </div>
-                                <div class="graph-star-rating-body">
-                                    <Row className="d-inline-flex w-100">
-                                        <Col className="w-10">5 Star</Col>
-                                        <Col className="w-80"><ProgressBar now={56} /></Col>
-                                        <Col className="w-10">56%</Col>
-                                    </Row>
-                                    <Row className="d-inline-flex w-100">
-                                        <Col className="w-10">5 Star</Col>
-                                        <Col className="w-80"><ProgressBar now={30} /></Col>
-                                        <Col className="w-10">30%</Col>
-                                    </Row>
-                                    <Row className="d-inline-flex w-100">
-                                        <Col className="w-10">5 Star</Col>
-                                        <Col className="w-80"><ProgressBar now={20} /></Col>
-                                        <Col className="w-10">20%</Col>
-                                    </Row>
-                                    <Row className="d-inline-flex w-100">
-                                        <Col className="w-10">5 Star</Col>
-                                        <Col className="w-80"><ProgressBar now={10} /></Col>
-                                        <Col className="w-10">10%</Col>
-                                    </Row>
-                                    <Row className="d-inline-flex w-100">
-                                        <Col className="w-10">5 Star</Col>
-                                        <Col className="w-80"><ProgressBar now={5} /></Col>
-                                        <Col className="w-10">5%</Col>
-                                    </Row>
-                                    
-                                </div>
-                                <div class="graph-star-rating-footer text-center mt-3 mb-3">
-                                    <button type="button" class="btn btn-outline-primary btn-sm">Rate and Review</button>
-                                </div>
-                            {/* </div> */}
-                            </Card.Body>
-                        </Card>
+                        <RatingComponent />
+                        
                     </Col>
                     <Col lg={8} className="py-3">
-                        <Card className="mb-3">
-                            <Card.Header><h4><strong>Introduction</strong></h4></Card.Header>
-                            <Card.Body>
-                                <Row>
-                                    <Container className="text-justify">
-                                        { introduction }
-                                    </Container>
-                                </Row>
-                            </Card.Body>
-                        </Card>
-                        <Card className="mb-3">
-                            <Card.Header><h4><strong>Technical Skill</strong></h4></Card.Header>
-                            <Card.Body>
-                                <Row>
-                                    <Container className="text-justify">
-                                        <strong>Tech Skill :</strong> { techSkill.languages.join(', ') }
-                                    </Container>
-                                </Row>
-                                <hr />
-                                <Row>
-                                    <Container className="text-justify">
-                                        <strong>Tools :</strong> { techSkill.tools.join(', ') }
-                                    </Container>
-                                </Row>
-                                <hr />
-                                <Row>
-                                    <Container className="text-justify">
-                                        <strong>Environments :</strong> { techSkill.environments.join(', ') }
-                                    </Container>
-                                </Row>
-                                {/* <hr />
-                                <Row>
-                                    <div className="col-sm-12">
-                                    <Link className="btn btn-primary " to="/profile-setting">Edit</Link>
-                                    </div>
-                                </Row> */}
-                            </Card.Body>
-                        </Card>
+                        <IntroductionComponent introduction={introduction} />
+                        <TechnicalSkillComponent techSkill={techSkill} />
                         <CarrerSummariesComponent carrerSummary={carrerSummary}/>
                         <FormalEducationComponent formalEducation={formalEducation}/>
                         <FormalTrainingCertificationComponent formalTrainingCertification={formalTrainingCertification}/>
                         <LanguageComponent language={languages} />
                         <PortfoliosComponent portfolios={portfolios} />
-                        {/* <Row className={classes.guttersSmall}>
-                            <Col className="mb-3">
-                                <Card className="h-100">
-                                    <div class="card-body">
-                                    <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Project Status</h6>
-                                    <small>Web Design</small>
-                                    <ProgressBar now={60} />
-                
-                                    <small>Website Markup</small>
-                                    <ProgressBar now={60} />
-                
-                                    <small>One Page</small>
-                                    <ProgressBar now={60} />
-                
-                                    <small>Mobile Template</small>
-                                    <ProgressBar now={60} />
-                
-                                    <small>Backend API</small>
-                                    <ProgressBar now={60} />
-                
-                                    </div>
-                                </Card>
-                            </Col>
-                            <Col className="mb-3">
-                                <Card className="h-100">
-                                    <Card.Body>
-                                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Project Status</h6>
-                                        <small>Web Design</small>
-                                        <ProgressBar now={60} />
-                    
-                                        <small>Website Markup</small>
-                                        <ProgressBar now={60} />
-                    
-                                        <small>One Page</small>
-                                        <ProgressBar now={60} />
-                    
-                                        <small>Mobile Template</small>
-                                        <ProgressBar now={60} />
-                    
-                                        <small>Backend API</small>
-                                        <ProgressBar now={60} />
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                        </Row> */}
+                        <CommentsComponent comments={comments} />
                     </Col>
                 </Row>
             </Container>
