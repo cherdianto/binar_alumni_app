@@ -1,9 +1,16 @@
 import React from 'react'
 import { Card, Col, Container, Form, Row, Nav, Tab } from 'react-bootstrap'
 import NavbarComponent from '../components/navbar/Navbar'
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { useDispatch, useSelector } from 'react-redux'
 import Footer from '../components/footer/Footer'
 import Button from '@restart/ui/esm/Button'
+import CarrerDinamicForm from '../components/profile/carrerSetting/CarrerDinamicForm'
+import EducationFormSettingComponent from '../components/profile/formalEducationSetting/EducationFormSettingComponent'
+import FormalTrainingCertificationSettingComponent from '../components/profile/formalTrainingCertificationSetting/FormalTrainingCertificationSettingComponent'
+import LanguageSettingComponent from '../components/profile/languageSetting/LanguageSettingComponent'
+import PortfolioSettingComponent from '../components/profile/portfoliosSetting/PortfolioSettingComponent'
 
 function ProfileSetting() {
     // const { uid, displayName, email, phoneNumber, photoUrl } = useSelector(state => state.auth.user.providerData[0])
@@ -36,18 +43,21 @@ function ProfileSetting() {
             id: '1',
             title: 'Bachelor of Engineering',
             school: 'Telkom University',
+            grade: '3.3',
             year: '2008 - 2012'
         },
         {
             id: '2',
             title: 'Senior High School',
             school: 'SMA 8 Yogyakarta',
+            grade: '90',
             year: '2005 - 2008'
         },
         {
             id: '3',
             title: 'Junior High School',
             school: 'Telkom University',
+            grade: '98',
             year: '2008 - 2012'
         },
     ]
@@ -230,7 +240,7 @@ function ProfileSetting() {
                             </Card>
                         </Col>
                         <Col md={8}>
-                            <Card>
+                            <Card className="customTab">
                                 <Card.Header className="border-bottom mb-3 d-md-none">
                                     <Nav justify variant="pills">
                                         <Nav.Item>
@@ -282,89 +292,108 @@ function ProfileSetting() {
                                         </li>
                                     </ul> */}
                                 </Card.Header>
-                                <Card.Body>
+                                <Card.Body className="py-0 px-0">
                                     <Tab.Content>
                                         <Tab.Pane eventKey="profile">
+                                            <Card className="mb-3">
+                                                <Card.Header>
+                                                    <h4><strong>Profile Information</strong></h4>
+                                                </Card.Header>
+                                                <Card.Body>
+                                                    <Form>
+                                                        <Form.Group className="mb-3" controlId="fullName">
+                                                            <Form.Label>Full Name</Form.Label>
+                                                            <Form.Control type="text" aria-describedby="fullNameHelp" placeholder="Enter your fullname" value={displayName} />
+                                                            <small id="fullNameHelp" class="form-text text-muted">Your name may appear around here where you are mentioned. You can change or remove it at any time.</small>
+                                                        </Form.Group>
+                                                        <Form.Group className="mb-3" controlId="specialization">
+                                                            <Form.Label>Specialization</Form.Label>
+                                                            <Form.Control type="text" aria-describedby="specializationHelp" placeholder="Write something about you" value={specialization} />
+                                                            <small id="specializationHelp" class="form-text text-muted">Your main specialization/expertise such as Full Stack Developer, UI/UX, Product Manager, etc</small>
+                                                        </Form.Group>
+                                                        <Row>
+                                                            <Form.Group className="mb-3" as={Col} md={6} controlId="currentCity">
+                                                                <Form.Label>Current City</Form.Label>
+                                                                <Form.Control type="text" placeholder="Enter your current city" value={currentCity} />
+                                                            </Form.Group>
+                                                            <Form.Group className="mb-3" as={Col} md={6} controlId="currentCountry">
+                                                                <Form.Label>Current Country</Form.Label>
+                                                                <Form.Control type="text" placeholder="Enter your current country" value={currentCountry} />
+                                                            </Form.Group>
+                                                        </Row>
+                                                        <Row>
+                                                            <Form.Group className="mb-3" as={Col} md={6} controlId="whatsapp">
+                                                                <Form.Label>Whatsapp Number</Form.Label>
+                                                                <Form.Control type="text" placeholder="Enter your whatsapp" value={whatsapp} />
+                                                            </Form.Group>
+                                                            <Form.Group className="mb-3" as={Col} md={6} controlId="telegram">
+                                                                <Form.Label>Telegram</Form.Label>
+                                                                <Form.Control type="text" placeholder="Enter your telegram number" value={telegram} />
+                                                            </Form.Group>
+                                                        </Row>
+                                                        <Form.Group className="mb-3" controlId="website">
+                                                            <Form.Label>Website</Form.Label>
+                                                            <Form.Control type="text" placeholder="Enter your website address" value={website} />
+                                                        </Form.Group>
+                                                        <Form.Group className="mb-3" controlId="gitRepository">
+                                                            <Form.Label>Git Repository</Form.Label>
+                                                            <Form.Control type="text" placeholder="Enter your git repository address" value={gitRepository} />
+                                                        </Form.Group>
+                                                    </Form>
+                                                </Card.Body>
+                                            </Card>
+                                            <Card className="mb-3">
+                                                <Card.Header>
+                                                    <h4><strong>Social Media Information</strong></h4>
+                                                </Card.Header>
+                                                <Card.Body>
+                                                    <Form>
+                                                        <Form.Group className="mb-3" controlId="facebook">
+                                                            <Form.Label>Facebook</Form.Label>
+                                                            <Form.Control type="text" placeholder="Enter your instagram address" value={facebook} />
+                                                        </Form.Group>
+                                                        <Form.Group className="mb-3" controlId="instagram">
+                                                            <Form.Label>Instagram</Form.Label>
+                                                            <Form.Control type="text" placeholder="Enter your instagram address" value={instagram} />
+                                                        </Form.Group>
+                                                    </Form>
+                                                </Card.Body>
+                                            </Card>
+                                            <Card>
+                                                <Card.Header>
+                                                    <h4><strong>Availability Information</strong></h4>
+                                                </Card.Header>
+                                                <Card.Body>
+                                                    <Form>
+                                                        <Form.Group className="mb-3" controlId="occupation">
+                                                            <Form.Label>Occupation</Form.Label>
+                                                            <Form.Control as="select">
+                                                                <option>Full Time Employee, not available</option>
+                                                                <option>Full Time Employee, freelance job available</option>
+                                                                <option>Part Time Employee, not available</option>
+                                                                <option>Part Time Employee, freelance job available</option>
+                                                                <option>Unmployeed, full time job available</option>
+                                                                <option>Unmployeed, part time job available</option>
+                                                                <option>Unmployeed, not available</option>
+                                                            </Form.Control>
+                                                        </Form.Group>
+                                                        <Form.Group className="mb-3" controlId="workPreferences">
+                                                            <Form.Label>Work Preferences</Form.Label>
+                                                            <Form.Control as="select">
+                                                                <option>Full Time, WFO</option>
+                                                                <option>Full Time, WFH</option>
+                                                                <option>Part Time, WFO</option>
+                                                                <option>Part Time, WFH</option>
+                                                            </Form.Control>
+                                                        </Form.Group>
+                                                        <Form.Group className="mb-3" controlId="timeAvailability">
+                                                            <Form.Label>Time Availability</Form.Label>
+                                                            <Form.Control type="text" placeholder="Enter your availability per week" value={timeAvailabitily} />
+                                                        </Form.Group>
+                                                    </Form>
+                                                </Card.Body>
+                                            </Card>
                                             <Form>
-                                                <h6>YOUR PROFILE INFORMATION</h6>
-                                                <hr />
-                                                <Form.Group className="mb-3" controlId="fullName">
-                                                    <Form.Label>Full Name</Form.Label>
-                                                    <Form.Control type="text" aria-describedby="fullNameHelp" placeholder="Enter your fullname" value={displayName} />
-                                                    <small id="fullNameHelp" class="form-text text-muted">Your name may appear around here where you are mentioned. You can change or remove it at any time.</small>
-                                                </Form.Group>
-                                                <Form.Group className="mb-3" controlId="specialization">
-                                                    <Form.Label>Specialization</Form.Label>
-                                                    <Form.Control type="text" aria-describedby="specializationHelp" placeholder="Write something about you" value={specialization} />
-                                                    <small id="specializationHelp" class="form-text text-muted">Your main specialization/expertise such as Full Stack Developer, UI/UX, Product Manager, etc</small>
-                                                </Form.Group>
-                                                <Row>
-                                                    <Form.Group className="mb-3" as={Col} md={6} controlId="currentCity">
-                                                        <Form.Label>Current City</Form.Label>
-                                                        <Form.Control type="text" placeholder="Enter your current city" value={currentCity} />
-                                                    </Form.Group>
-                                                    <Form.Group className="mb-3" as={Col} md={6} controlId="currentCountry">
-                                                        <Form.Label>Current Country</Form.Label>
-                                                        <Form.Control type="text" placeholder="Enter your current country" value={currentCountry} />
-                                                    </Form.Group>
-                                                </Row>
-                                                <Row>
-                                                    <Form.Group className="mb-3" as={Col} md={6} controlId="whatsapp">
-                                                        <Form.Label>Whatsapp Number</Form.Label>
-                                                        <Form.Control type="text" placeholder="Enter your whatsapp" value={whatsapp} />
-                                                    </Form.Group>
-                                                    <Form.Group className="mb-3" as={Col} md={6} controlId="telegram">
-                                                        <Form.Label>Telegram</Form.Label>
-                                                        <Form.Control type="text" placeholder="Enter your telegram number" value={telegram} />
-                                                    </Form.Group>
-                                                </Row>
-                                                <Form.Group className="mb-3" controlId="website">
-                                                    <Form.Label>Website</Form.Label>
-                                                    <Form.Control type="text" placeholder="Enter your website address" value={website} />
-                                                </Form.Group>
-                                                <Form.Group className="mb-3" controlId="gitRepository">
-                                                    <Form.Label>Git Repository</Form.Label>
-                                                    <Form.Control type="text" placeholder="Enter your git repository address" value={gitRepository} />
-                                                </Form.Group>
-                                                <hr />
-                                                <h6>YOUR SOCIAL MEDIA INFORMATION</h6>
-                                                <hr />
-                                                <Form.Group className="mb-3" controlId="facebook">
-                                                <Form.Label>Facebook</Form.Label>
-                                                    <Form.Control type="text" placeholder="Enter your instagram address" value={facebook} />
-                                                </Form.Group>
-                                                <Form.Group className="mb-3" controlId="instagram">
-                                                    <Form.Label>Instagram</Form.Label>
-                                                    <Form.Control type="text" placeholder="Enter your instagram address" value={instagram} />
-                                                </Form.Group>
-                                                <hr />
-                                                <h6>YOUR AVAILABILITY INFORMATION</h6>
-                                                <hr />
-                                                <Form.Group className="mb-3" controlId="occupation">
-                                                    <Form.Label>Occupation</Form.Label>
-                                                    <Form.Control as="select">
-                                                        <option>Full Time Employee, not available</option>
-                                                        <option>Full Time Employee, freelance job available</option>
-                                                        <option>Part Time Employee, not available</option>
-                                                        <option>Part Time Employee, freelance job available</option>
-                                                        <option>Unmployeed, full time job available</option>
-                                                        <option>Unmployeed, part time job available</option>
-                                                        <option>Unmployeed, not available</option>
-                                                    </Form.Control>
-                                                </Form.Group>
-                                                <Form.Group className="mb-3" controlId="workPreferences">
-                                                    <Form.Label>Work Preferences</Form.Label>
-                                                    <Form.Control as="select">
-                                                        <option>Full Time, WFO</option>
-                                                        <option>Full Time, WFH</option>
-                                                        <option>Part Time, WFO</option>
-                                                        <option>Part Time, WFH</option>
-                                                    </Form.Control>
-                                                </Form.Group>
-                                                <Form.Group className="mb-3" controlId="timeAvailability">
-                                                    <Form.Label>Time Availability</Form.Label>
-                                                    <Form.Control type="text" placeholder="Enter your availability per week" value={timeAvailabitily} />
-                                                </Form.Group>
                                                 <button type="button" className="btn btn-primary my-3 mx-3">Update Profile</button>
                                                 <button type="reset" className="btn btn-light my-3 mx-3">Reset Changes</button>
                                             </Form>
@@ -410,37 +439,19 @@ function ProfileSetting() {
                                                 </Card.Body>
                                             </Card>
                                             <Card className="mb-3">
-                                                <Card>
-                                                    <Card.Header><h4><strong>Carrer Summaries</strong></h4></Card.Header>
-                                                    <Card.Body>
-                                                        <Form>
-                                                            <Row>
-                                                                <Form.Group as={Col} className="mb-3" controlId="languages">
-                                                                    <Form.Label>Position</Form.Label>
-                                                                    <Form.Control type="text" placeholder="Separate with comma, e.g : Nodejs, Javascript, C++, Phyton, etc" value={techSkill.Languages} />
-                                                                </Form.Group>
-                                                                <Form.Group as={Col} className="mb-3" controlId="languages">
-                                                                    <Form.Label>Company</Form.Label>
-                                                                    <Form.Control type="text" placeholder="Cpta Karya Terang Avadi" value={techSkill.Languages} />
-                                                                </Form.Group>
-                                                            </Row>
-                                                            <Form.Group className="mb-3" controlId="tools">
-                                                                <Form.Label>Location</Form.Label>
-                                                                <Form.Control type="text" placeholder="Enschede, The Netherlands" value={techSkill.Tools} />
-                                                            </Form.Group>
-                                                            <Form.Group className="mb-3" controlId="environments">
-                                                                <Form.Label>Period</Form.Label>
-                                                                <Form.Control type="text" placeholder="Period, e.g: 1 January 2019 - 30 December 2020" value={techSkill.Environments} />
-                                                            </Form.Group>
-                                                            <Form.Group className="mb-3" controlId="environments">
-                                                                <Form.Label>Job Description</Form.Label>
-                                                                <Form.Control type="text" placeholder="Job Description" value={techSkill.Environments} />
-                                                            </Form.Group>
-                                                            <button type="button" className="btn btn-primary my-3 mx-3">Add more row</button>
-                                                            <button type="button" className="btn btn-primary my-3 mx-3">Save the update</button>
-                                                        </Form>
-                                                    </Card.Body>
-                                                </Card>
+                                                <CarrerDinamicForm carrerSummary={carrerSummary}/>
+                                            </Card>
+                                            <Card className="mb-3">
+                                                <EducationFormSettingComponent formalEducation={formalEducation} />
+                                            </Card>
+                                            <Card className="mb-3">
+                                                <FormalTrainingCertificationSettingComponent formalTrainingCertification={formalTrainingCertification} />
+                                            </Card>
+                                            <Card className="mb-3">
+                                                <LanguageSettingComponent languages={languages} />
+                                            </Card>
+                                            <Card className="mb-3">
+                                                <PortfolioSettingComponent portfolios={portfolios} />
                                             </Card>
                                             <Form>
                                                 <button type="button" className="btn btn-primary my-3 mx-3">Update Profile</button>

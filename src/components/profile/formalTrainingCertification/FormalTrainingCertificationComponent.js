@@ -6,7 +6,7 @@ function FormalTrainingCertificationComponent({formalTrainingCertification}) {
         <Card className="mb-3">
             <Card.Header><h4><strong>Tranings and Certifications</strong></h4></Card.Header>
             <Card.Body>
-                <Table striped>
+                <Table striped responsive>
                     <thead>
                         <tr>
                             <th>Title</th>

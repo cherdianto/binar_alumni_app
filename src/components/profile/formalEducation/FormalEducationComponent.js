@@ -6,11 +6,12 @@ function FormalEducationComponent({formalEducation}) {
         <Card className="mb-3">
             <Card.Header><h4><strong>Educations</strong></h4></Card.Header>
             <Card.Body>
-                <Table striped>
+                <Table striped responsive>
                     <thead>
                         <tr>
                             <th>Title</th>
                             <th>School</th>
+                            <th>Grade</th>
                             <th>Year</th>
                         </tr>
                     </thead>
@@ -20,6 +21,7 @@ function FormalEducationComponent({formalEducation}) {
                                 <tr>
                                     <td>{formalEducation.title}</td>
                                     <td>{formalEducation.school}</td>
+                                    <td>{formalEducation.grade}</td>
                                     <td>{formalEducation.year}</td>
                                 </tr>
                             )

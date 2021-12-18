@@ -45,18 +45,21 @@ function Profile() {
             id: '1',
             title: 'Bachelor of Engineering',
             school: 'Telkom University',
+            grade: '3.3',
             year: '2008 - 2012'
         },
         {
             id: '2',
             title: 'Senior High School',
             school: 'SMA 8 Yogyakarta',
+            grade: '90',
             year: '2005 - 2008'
         },
         {
             id: '3',
             title: 'Junior High School',
             school: 'Telkom University',
+            grade: '98',
             year: '2008 - 2012'
         },
     ]
@@ -219,9 +222,11 @@ function Profile() {
                                         <p className="text-muted font-size-sm mb-1">Job Preferences: {workPreferences}</p>
                                         <p className="text-muted font-size-sm mb-1">Time Availability: {timeAvailabitily}</p>
                                         <hr />
-                                        <button className="btn btn-primary mx-2">Follow</button>
-                                        <button className="btn btn-outline-primary mx-2">Message</button>
-                                        <button className="btn btn-outline-primary mx-2"><Link to="/profile-setting">Edit</Link></button>
+                                        <Row>
+                                            <button className="btn btn-primary mx-2">Follow</button>
+                                            <button className="btn btn-outline-primary mx-2">Message</button>
+                                            <button className="btn btn-outline-primary mx-2"><Link to="/profile-setting">Edit</Link></button>
+                                        </Row>
                                     </div>
                                 </div>
                                 <hr className="my-4" />
