@@ -5,6 +5,7 @@ import { Card, Form, Row, Col, Button } from 'react-bootstrap'
 
 function CarrerDinamicForm({carrerSummary}) {
     const [carrer, setCarrer] = useState(carrerSummary)
+    const [keyAchievement, setKeyAchievement] = useState('')
 
     let handleChange = (i, e) => {
         let newCarrer = [
@@ -25,10 +26,20 @@ function CarrerDinamicForm({carrerSummary}) {
                 position: "",
                 company: "",
                 periode: "",
+                keyAchievement: [{
+                    id: '1',
+                    detail: ''
+                }],   
                 description: ""   
             }
         ])
     }
+
+    // let addMoreKeyAchievement = () => {
+    //     setKeyAchievement([
+
+    //     ])
+    // }
 
     let removeCarrer = (index) => {
         let newCarrer = [
@@ -37,6 +48,21 @@ function CarrerDinamicForm({carrerSummary}) {
 
         newCarrer.splice(index,1)
         setCarrer(newCarrer)
+    }
+
+    let removeKeyAchievement = (index, keyAchevementIndex) => {
+        // index -= 1
+        let newKeyAchievement = [
+            ...carrer
+        ]
+        // console.log(carrer)
+        console.log(index)
+        console.log(keyAchevementIndex)
+        console.log(newKeyAchievement[index].keyAchievement)
+
+        newKeyAchievement[index].keyAchievement.splice(keyAchevementIndex-1,1)
+        setKeyAchievement(newKeyAchievement)
+        // console.log(carrer)
     }
 
     // const carrerSummary = [
@@ -104,6 +130,7 @@ function CarrerDinamicForm({carrerSummary}) {
                                             <Form.Control type="text" name="company" onChange={(e) => handleChange(index, e)} placeholder="Cipta Karya Terang Abadi" value={element.company || ""} />
                                         </Form.Group>
                                     </Row>
+
                                     <Form.Group className="mb-3" controlId="period">
                                         <Form.Label>Period</Form.Label>
                                         <Form.Control type="text" name="periode" onChange={(e) => handleChange(index, e)} placeholder="Period, e.g: 1 January 2019 - 30 December 2020" value={element.periode || ""} />
@@ -112,10 +139,41 @@ function CarrerDinamicForm({carrerSummary}) {
                                         <Form.Label>Job Description</Form.Label>
                                         <Form.Control type="text" name="description" onChange={(e) => handleChange(index, e)} placeholder="Job Description" value={element.description || ""} />
                                     </Form.Group>
-                                    <Form.Group className="mb-3" controlId="keyAchievement">
-                                        <Form.Label>Key Achievement</Form.Label>
-                                        <Form.Control type="text" name="keyAchievement" onChange={(e) => handleChange(index, e)} placeholder="Key Achievement" value={element.keyAchievement || ""} />
+                                    { element.keyAchievement && (
+                                        <Form.Group className="mb-3" controlId="keyAchievement">
+                                            <Form.Label className="justify-content-between d-flex">Key Achievement <span><Button>Add</Button></span></Form.Label>
+                                            { element.keyAchievement.map((x) => {
+                                                return (
+                                                    <Row className="d-flex justify-content-start mb-2">
+                                                        <Col md={1} className="align-center py-3">{x.id}</Col> 
+                                                        <Col md={9}>
+                                                            <Form.Control as="textarea" name="keyAchievement" placeholder="Key Achievement" value={x.detail} />
+                                                        </Col>
+                                                        <Col className="align-center py-2"><Button variant="danger" onClick={() => removeKeyAchievement(index, x.id-1)}>Delete</Button></Col> 
+                                                    </Row>
+                                                )
+                                            })}
+                                        
+
                                     </Form.Group>
+                                    ) }
+                                    {/* { element.keyAchievement ? (
+                                        <Form.Group className="mb-3" controlId="keyAchievement">
+                                            <Form.Label>Key Achievement</Form.Label>
+                                            { element.keyAchievement.map((x) => {
+                                                console.log(x.detail)
+                                                return (
+                                                    <Row className="justify-content-between">
+                                                        <Col md={1}>{x.id}</Col> 
+                                                        <Col>
+                                                            <Form.Control as="textarea" name="keyAchievement" placeholder="Key Achievement" value={x.detail} />
+                                                        </Col>
+                                                        <Col><Button>Delete</Button></Col> 
+                                                    </Row>
+                                                )
+                                            })}
+                                    </Form.Group>
+                                    ) : console.log('no') } */}
                                 </Form>
                             </Card.Body>
                         </Card>

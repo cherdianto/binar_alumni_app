@@ -111,7 +111,11 @@ function ProfileSetting() {
             position: 'software developer',
             company: 'webcreatia.com',
             periode: 'januari 2020 - januari 2021',
-            description: 'lorem ipsum generator making'
+            description: 'lorem ipsum generator making',
+            keyAchievement: [
+                { id: '1',
+                detail: 'successfully deploy new product to production phase'}
+            ]
         },
         { 
             id: '3',
