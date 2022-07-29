@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Row, Col, Form, Button, Alert, Nav } from 'react-bootstrap'
-import classes from './Login.module.css'
 import { Link, useNavigate } from 'react-router-dom'
 
 
@@ -62,7 +61,7 @@ function LoginComponent(props) {
     }, [errorCode])
 
     return (
-        <div className={classes.hcustom}>
+        <div className='auth-height'>
             <Container className="h-100">
                 <Row className="py-5 h-100 mx-auto justify-content-center align-items-center">
                     <Col md={8} lg={8} >
