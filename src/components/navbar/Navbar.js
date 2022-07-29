@@ -15,7 +15,7 @@ function NavbarComponent(props) {
         <Navbar expand="lg" bg="light" sticky="top">
         <Container>
             <Navbar.Brand as={Link} to="/">
-                Web<strong>Creatia</strong>
+                <strong><i>Binar</i></strong>Alumni
             </Navbar.Brand>
             {link}
         </Container>

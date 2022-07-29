@@ -54,3 +54,16 @@ code {
   font-family: "Poppins", sans-serif;
   color: #2a2c39;
 }
+
+.hcustom {
+  min-height: calc(100vh - 115px);
+}
+
+.gutterSmall {
+  margin-right: -8px;
+  margin-left: -8px;
+}
+
+.customTab {
+  border: none!important;
+}
