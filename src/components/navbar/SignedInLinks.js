@@ -18,6 +18,7 @@ export default function SignedInLinks() {
             {/* if you want to place a menu group on the left */}
             {/* <Nav className="mr-auto"></Nav> */}
             <Nav className="ml-auto">
+                <Nav.Link as={Link} to="/members">Members</Nav.Link>
                 <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
                 {/* <Nav.Link as={Link} to="/redux">Redux</Nav.Link> */}
                 {/* <Nav.Link as={Link} to="/page1">Page 1</Nav.Link> */}

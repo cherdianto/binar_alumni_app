@@ -1,5 +1,5 @@
 {
-  "name": "reactjs-redux_boilerplate",
+  "name": "binar_alumni_app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.1.10",
     "aos": "^2.3.4",
     "bootstrap": "^4.6.0",
+    "dotenv": "^16.0.1",
     "firebase": "^9.5.0",
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.2",
