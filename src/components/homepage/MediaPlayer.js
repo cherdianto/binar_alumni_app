@@ -11,7 +11,8 @@ export default function MediaPlayer() {
           <Player
             playsInLine
             poster={poster}
-            src={source} 
+            src={source}
+            fluid='true' 
           >
             <ControlBar autoHide={false} />
             <BigPlayButton position="center" />

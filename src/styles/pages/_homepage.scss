@@ -1,0 +1,13 @@
+.section {
+    padding: 90px 0;
+    position: relative;
+
+    @media (max-width: 767.98px){
+        padding: 50px 0;
+    }
+}
+
+.section-tutorial {
+//   background-color: rgba(191, 193, 194, 0.5);
+    height: 100vh;
+}
