@@ -2,6 +2,20 @@
   height: calc(100vh - 115px) !important;
 }
 
+.section {
+  padding: 90px 0;
+  position: relative;
+}
+@media (max-width: 767.98px) {
+  .section {
+    padding: 50px 0;
+  }
+}
+
+.section-tutorial {
+  height: 100vh;
+}
+
 body {
   margin-left: 0 !important;
   margin-right: 0 !important;
