@@ -13,7 +13,7 @@ function EducationFormSettingComponent({formalEducation}) {
         newEducation[i][e.target.name] = e.target.value
         setEducation(newEducation)
 
-        console.log(education)
+        // console.log(education)
     }
 
     let addMoreEducation = () => {

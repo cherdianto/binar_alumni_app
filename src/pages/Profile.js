@@ -173,7 +173,7 @@ function Profile() {
     const comments = [
         {
             id: 1,
-            imgUrl : "http://bootdey.com/img/Content/avatar/avatar1.png",
+            imgUrl : "https://bootdey.com/img/Content/avatar/avatar1.png",
             name: "Candra Herdianto",
             job: "Senior Full Stack Developer",
             date: "June 1st, 2020",
@@ -181,7 +181,7 @@ function Profile() {
         },
         {
             id: 2,
-            imgUrl : "http://bootdey.com/img/Content/avatar/avatar1.png",
+            imgUrl : "https://bootdey.com/img/Content/avatar/avatar1.png",
             name: "Candra Herdianto",
             job: "Senior Full Stack Developer",
             date: "June 1st, 2020",
@@ -189,7 +189,7 @@ function Profile() {
         },
         {
             id: 3,
-            imgUrl : "http://bootdey.com/img/Content/avatar/avatar1.png",
+            imgUrl : "https://bootdey.com/img/Content/avatar/avatar1.png",
             name: "Candra Herdianto",
             job: "Senior Full Stack Developer",
             date: "June 1st, 2020",

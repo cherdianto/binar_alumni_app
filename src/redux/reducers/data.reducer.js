@@ -5,18 +5,18 @@ const initState = {
 const dataReducer = (state = initState, action) => {
     switch (action.type) {
         case 'GET_DATA':
-            console.log('get data');
+            // console.log('get data');
             return {
                 ...state
             }
         case 'ADD_DATA':
-            console.log('add data');
+            // console.log('add data');
             return {
                 ...state,
                 data: state.data + action.payload
             }
         case 'DELETE_DATA':
-            console.log('delete data');
+            // console.log('delete data');
             return {
                 ...state,
                 data: 0

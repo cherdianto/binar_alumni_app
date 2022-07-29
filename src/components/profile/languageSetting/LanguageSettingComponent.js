@@ -20,7 +20,7 @@ function LanguageSettingComponent({languages}) {
         newLanguage[i][e.target.name] = e.target.value
         setLanguage(newLanguage)
 
-        console.log(language)
+        // console.log(language)
     }
 
     let addMoreLanguage = () => {

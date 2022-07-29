@@ -56,9 +56,9 @@ function CarrerDinamicForm({carrerSummary}) {
             ...carrer
         ]
         // console.log(carrer)
-        console.log(index)
-        console.log(keyAchevementIndex)
-        console.log(newKeyAchievement[index].keyAchievement)
+        // console.log(index)
+        // console.log(keyAchevementIndex)
+        // console.log(newKeyAchievement[index].keyAchievement)
 
         newKeyAchievement[index].keyAchievement.splice(keyAchevementIndex-1,1)
         setKeyAchievement(newKeyAchievement)

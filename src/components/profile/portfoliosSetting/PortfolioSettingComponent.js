@@ -22,7 +22,7 @@ function PortfolioSettingComponent({portfolios}) {
         newPortfolio[i][e.target.name] = e.target.value
         setPortfolio(newPortfolio)
 
-        console.log(portfolio)
+        // console.log(portfolio)
     }
 
     let addMorePortfolio = () => {

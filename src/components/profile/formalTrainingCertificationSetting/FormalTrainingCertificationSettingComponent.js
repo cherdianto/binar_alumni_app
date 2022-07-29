@@ -21,7 +21,7 @@ function FormalTrainingCertificationSettingComponent({formalTrainingCertificatio
         newTraining[i][e.target.name] = e.target.value
         setTraining(newTraining)
 
-        console.log(training)
+        // console.log(training)
     }
 
     let addMoretraining = () => {
